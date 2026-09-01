@@ -2,5 +2,5 @@
 using namespace std;
 int main() { 
     cin.tie(nullptr)->sync_with_stdio(false); 
-    // code
+    // code without blank lines
 }
