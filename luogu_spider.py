@@ -35,11 +35,11 @@ def main():
     hint = (content.get("hint") or "").strip()
     samples = problem.get("samples") or []
 
-    md = [f"# {pid} {name}", "", "## Problem Description", "", desc, "", "## Input Format", "", format_in, "", "## Output Format", "", format_out]
+    md = [f"# {pid} {name}", "", "## 题目描述", "", desc, "", "## 输入格式", "", format_in, "", "## 输出格式", "", format_out]
     for i, (input_data, output_data) in enumerate(samples, 1):
-        md += ["", f"## Sample Input {i}", "", "```", input_data.strip(), "```", "", f"## Sample Output {i}", "", "```", output_data.strip(), "```"]
+        md += ["", f"## 样例输入 {i}", "", "```", input_data.strip(), "```", "", f"## 样例输出 {i}", "", "```", output_data.strip(), "```"]
     if hint:
-        md += ["", "## Hint", "", hint, ""]
+        md += ["", "## 提示", "", hint, ""]
 
     with open(f"{pid}.md", "w", encoding="utf-8") as f:
         f.write("\n".join(md))
