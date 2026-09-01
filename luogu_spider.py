@@ -32,7 +32,7 @@ def main():
     desc = content.get("description", "").strip()
     format_in = content.get("formatI", "").strip()
     format_out = content.get("formatO", "").strip()
-    hint = content.get("hint", "").strip()
+    hint = (content.get("hint") or "").strip()
     samples = problem.get("samples") or []
 
     md = [f"# {pid} {name}", "", "## 题目描述", "", desc, "", "## 输入格式", "", format_in, "", "## 输出格式", "", format_out]
