@@ -23,7 +23,7 @@ def main():
     html = fetch(f"https://www.luogu.com.cn/problem/{pid}")
     m = re.search(r'<script id="lentille-context" type="application/json">(.*?)</script>', html, re.S)
     if not m:
-        print("解析失败：未找到题目数据")
+        print("Parse failed: problem data not found")
         return
     problem = json.loads(m.group(1))["data"]["problem"]
     pid = problem["pid"]
@@ -35,15 +35,15 @@ def main():
     hint = (content.get("hint") or "").strip()
     samples = problem.get("samples") or []
 
-    md = [f"# {pid} {name}", "", "## 题目描述", "", desc, "", "## 输入格式", "", format_in, "", "## 输出格式", "", format_out]
+    md = [f"# {pid} {name}", "", "## Problem Description", "", desc, "", "## Input Format", "", format_in, "", "## Output Format", "", format_out]
     for i, (input_data, output_data) in enumerate(samples, 1):
-        md += ["", f"## 样例输入 {i}", "", "```", input_data.strip(), "```", "", f"## 样例输出 {i}", "", "```", output_data.strip(), "```"]
+        md += ["", f"## Sample Input {i}", "", "```", input_data.strip(), "```", "", f"## Sample Output {i}", "", "```", output_data.strip(), "```"]
     if hint:
-        md += ["", "## 提示", "", hint, ""]
+        md += ["", "## Hint", "", hint, ""]
 
     with open(f"{pid}.md", "w", encoding="utf-8") as f:
         f.write("\n".join(md))
-    print(f"已保存 {pid}.md")
+    print(f"Saved {pid}.md")
 
 
 if __name__ == "__main__":
