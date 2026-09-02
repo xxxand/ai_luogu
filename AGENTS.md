@@ -9,6 +9,10 @@ If no language is specified, use C++.
 - When the user says to solve a problem (e.g., "solve P1024"), run `python luogu_spider.py <pid>` (e.g., `python luogu_spider.py P1024`) to generate the `<pid>.md` problem file.
 - Write the solution based on the problem statement and samples in `<pid>.md`, and verify it against the samples.
 
+## Task Tracking
+
+- Do not create or update task lists for routine problem-solving requests in this repository.
+
 ## C++ Code Format
 
 - Write solution files based on `template.cpp`, following its structure (`#include <bits/stdc++.h>`, `using namespace std;`, `cin.tie(nullptr)->sync_with_stdio(false);`, etc.).
