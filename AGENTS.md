@@ -13,6 +13,10 @@ If no language is specified, use C++.
 
 - Do not create or update task lists for routine problem-solving requests in this repository.
 
+## General Code Format
+
+- Write code without blank lines or comments in all programming languages used in this project.
+
 ## C++ Code Format
 
 - Write solution files based on `template.cpp`, following its structure (`#include <bits/stdc++.h>`, `using namespace std;`, `cin.tie(nullptr)->sync_with_stdio(false);`, etc.).
@@ -32,5 +36,4 @@ g++ -std=c++23 -O2 -Wall -fno-asm 1.cpp -o 1.exe --static -lstdc++exp -lm
 
 ## Python Code Format
 
-- Write code without blank lines or comments.
 - If the input or output volume is large, or faster IO is required, prefer `import sys` and read/write via `sys.stdin.buffer` / `sys.stdout.write`.
