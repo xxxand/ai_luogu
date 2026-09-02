@@ -37,7 +37,7 @@ def main():
 
     md = [f"# {pid} {name}", "", "## 题目描述", "", desc, "", "## 输入格式", "", format_in, "", "## 输出格式", "", format_out]
     for i, (input_data, output_data) in enumerate(samples, 1):
-        md += ["", f"## 样例输入 {i}", "", "```", input_data.strip(), "```", "", f"## 样例输出 {i}", "", "```", output_data.strip(), "```"]
+        md += ["", f"## 样例输入 {i}", "", "```", input_data.rstrip(), "```", "", f"## 样例输出 {i}", "", "```", output_data.rstrip(), "```"]
     if hint:
         md += ["", "## 提示", "", hint, ""]
 
