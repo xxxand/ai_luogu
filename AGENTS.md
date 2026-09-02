@@ -2,6 +2,8 @@
 
 This project is for solving Luogu problems.
 
+If no language is specified, use C++.
+
 ## Getting Problems
 
 - When the user says to solve a problem (e.g., "solve P1024"), run `python luogu_spider.py <pid>` (e.g., `python luogu_spider.py P1024`) to generate the `<pid>.md` problem file.
@@ -23,3 +25,8 @@ Example:
 ```powershell
 g++ -std=c++23 -O2 -Wall -fno-asm 1.cpp -o 1.exe --static -lstdc++exp -lm
 ```
+
+## Python Code Format
+
+- Write code without blank lines or comments.
+- If the input or output volume is large, or faster IO is required, prefer `import sys` and read/write via `sys.stdin.buffer` / `sys.stdout.write`.
