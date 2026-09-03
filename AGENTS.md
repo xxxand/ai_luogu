@@ -25,13 +25,13 @@ If no language is specified, use C++.
 ## Compile Command
 
 ```powershell
-g++ -std=c++23 -O2 -Wall -fno-asm <file>.cpp -o <file>.exe --static -lstdc++exp -lm
+g++ -std=c++23 -O2 -Wall -fno-asm <file>.cpp -o <file>.exe
 ```
 
 Example:
 
 ```powershell
-g++ -std=c++23 -O2 -Wall -fno-asm 1.cpp -o 1.exe --static -lstdc++exp -lm
+g++ -std=c++23 -O2 -Wall -fno-asm 1.cpp -o 1.exe
 ```
 
 ## Python Code Format
