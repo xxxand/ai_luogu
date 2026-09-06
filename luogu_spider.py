@@ -1,6 +1,7 @@
 import json
 import re
 import sys
+from urllib.parse import urljoin
 
 import requests
 
@@ -34,12 +35,21 @@ def main():
     format_out = content.get("formatO", "").strip()
     hint = (content.get("hint") or "").strip()
     samples = problem.get("samples") or []
+    attachments = problem.get("attachments") or []
 
     md = [f"# {pid} {name}", "", "## 题目描述", "", desc, "", "## 输入格式", "", format_in, "", "## 输出格式", "", format_out]
     for i, (input_data, output_data) in enumerate(samples, 1):
         md += ["", f"## 样例输入 {i}", "", "```", input_data.rstrip(), "```", "", f"## 样例输出 {i}", "", "```", output_data.rstrip(), "```"]
     if hint:
         md += ["", "## 提示", "", hint, ""]
+    if attachments:
+        md += ["", "## 附件", ""]
+        for attachment in attachments:
+            filename = attachment.get("filename", "附件")
+            download_link = attachment.get("downloadLink", "")
+            if download_link:
+                link = urljoin("https://www.luogu.com.cn", download_link)
+                md.append(f"- [{filename}]({link})")
 
     with open(f"{pid}.md", "w", encoding="utf-8") as f:
         f.write("\n".join(md))

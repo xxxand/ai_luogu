@@ -9,6 +9,10 @@ Use C++ when the user does not specify a programming language.
 - When the user asks to solve a problem (for example, "solve P1024"), run `python luogu_spider.py <pid>` (for example, `python luogu_spider.py P1024`) to generate the corresponding `<pid>.md` file.
 - Base the solution on the problem statement and samples in `<pid>.md`, then verify it against those samples.
 
+## Solution Scraping Restriction
+
+- Do not scrape, retrieve, parse, or use problem solutions in any form, including through web pages, APIs, attachments, or other sources.
+
 ## Task Tracking
 
 - Do not create or update task lists for routine problem-solving requests.
