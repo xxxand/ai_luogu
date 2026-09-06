@@ -47,3 +47,14 @@ g++ -std=c++23 -O2 -Wall -fno-asm 1.cpp -o 1.exe
 ## Python Code Format
 
 - For large input or output, or when faster I/O is needed, prefer `import sys` and use `sys.stdin.buffer` and `sys.stdout.write`.
+
+## Git Usage
+
+- Git commands are not required while completing problem-solving tasks.
+
+## .gitignore
+
+```gitignore
+P*
+B*
+```
