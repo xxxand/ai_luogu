@@ -1,112 +1,72 @@
 # AI Luogu
 
-**Using AI to solve [Luogu](https://www.luogu.com.cn/) problems.**
+Solve [Luogu](https://www.luogu.com.cn/) problems with an AI coding agent.
 
-AI Luogu is a lightweight tool designed to assist with solving programming problems from Luogu. It provides a simple workflow for retrieving problem information and generating solutions with the help of AI.
+This repository pairs a small problem scraper with agent instructions, so an AI coding agent can read a Luogu problem statement and write a verified C++ solution.
 
-## Features
-
-* Fetch Luogu problem information automatically.
-* Use AI to assist with problem solving.
-* Generate C++ solutions based on a predefined template.
-* Simple and lightweight Python-based workflow.
-* Easy to customize for different AI models or solution-generation strategies.
-
-## Project Structure
+## How It Works
 
 ```text
-.
-├── luogu_spider.py   # Fetches problem information from Luogu
-├── template.cpp      # C++ solution template
-├── AGENTS.md         # Project instructions
-└── LICENSE           # MIT License
+Problem ID  ->  luogu_spider.py  ->  <pid>.md  ->  AI coding agent  ->  <pid>.cpp
 ```
+
+`luogu_spider.py` downloads the problem and stores it as Markdown. The agent then reads that file, writes a solution, compiles it, and checks it against the samples.
 
 ## Requirements
 
-* Python 3.x
-* A working internet connection
-* An AI model/API capable of generating programming solutions
+- Python 3
+- `requests`
+- A C++23 compiler (`g++`)
+- An AI coding agent such as [OpenCode](https://opencode.ai/)
 
 ## Usage
-
-Clone the repository:
 
 ```bash
 git clone https://github.com/xxxand/ai_luogu.git
 cd ai_luogu
+pip install requests
 ```
 
-Run the main script:
+Fetch a problem by ID:
 
 ```bash
-python luogu_spider.py
+python luogu_spider.py P1024
 ```
 
-Depending on your configuration, you may need to provide the problem URL, problem ID, or AI service credentials.
+This writes `P1024.md` containing the description, input/output format, samples, hints, and attachment links. Without an ID the script defaults to `P1024`.
 
-## Workflow
-
-The general workflow is:
+Then ask your agent to solve it, for example:
 
 ```text
-Luogu Problem
-      │
-      ▼
- Problem Spider
-      │
-      ▼
-Problem Information
-      │
-      ▼
-      AI Model
-      │
-      ▼
-Generated Solution
-      │
-      ▼
-   C++ Code
+solve P1024
 ```
 
-The project separates problem retrieval from solution generation, making it easier to replace or extend individual components.
+## Output
 
-## Example
+| File        | Contents                                        |
+| ----------- | ----------------------------------------------- |
+| `<pid>.md`  | Scraped problem statement                       |
+| `<pid>.cpp` | C++ solution                                    |
+| `<pid>.exe` | Compiled binary                                 |
 
-Given a Luogu problem, the tool can retrieve the relevant problem information and use an AI model to help produce a C++ solution.
+Generated problems and binaries are ignored by Git (see `.gitignore`).
 
-The generated code can then be reviewed, compiled, tested, and submitted manually.
+## Building
 
-> **Note:** AI-generated solutions may contain incorrect assumptions, implementation bugs, or inefficient algorithms. Always verify the solution before submission.
+```powershell
+g++ -std=c++23 -O2 -Wall -fno-asm P1024.cpp -o P1024.exe
+```
 
-## Customization
+## Agent Instructions
 
-You can modify `template.cpp` to define your preferred C++ solution template, coding style, or commonly used utilities.
-
-The spider implementation in `luogu_spider.py` can also be extended to support additional problem information or different input methods.
+[`AGENTS.md`](AGENTS.md) defines the workflow the agent follows: fetching problems with the scraper, using C++ by default, keeping source files comment-free and compact, and verifying solutions against the samples.
 
 ## Disclaimer
 
-This project is intended for learning, experimentation, and programming assistance.
+AI-generated solutions may contain wrong assumptions, bugs, or inefficient algorithms. Always review and test before submitting.
 
-It is **not affiliated with or endorsed by Luogu**.
-
-Please respect Luogu's terms of service and applicable rate limits when accessing its website. Do not use this project to abuse or overload Luogu's services.
-
-## Contributing
-
-Contributions are welcome.
-
-If you have an idea for an improvement:
-
-1. Fork this repository.
-2. Create a new branch.
-3. Make your changes.
-4. Open a Pull Request.
-
-Bug reports and feature requests can also be submitted through GitHub Issues.
+This project is not affiliated with or endorsed by Luogu. Please respect Luogu's terms of service and rate limits.
 
 ## License
 
-This project is licensed under the [MIT License](LICENSE).
-
-Copyright © 2026 jxxyyy.
+[MIT](LICENSE) © 2026 jxxyyy
