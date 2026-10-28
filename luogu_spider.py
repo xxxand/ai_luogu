@@ -51,8 +51,12 @@ def main():
                 link = urljoin("https://www.luogu.com.cn", download_link)
                 md.append(f"- [{filename}]({link})")
 
+    text = "\n".join(md)
+    text = re.sub(r"::anti-ai\[.*?\]", "", text, flags=re.S)
+    text = re.sub(r"::anti-ai[^\n]*", "", text)
+    text = re.sub(r"\n{3,}", "\n\n", text)
     with open(f"{pid}.md", "w", encoding="utf-8") as f:
-        f.write("\n".join(md))
+        f.write(text)
     print(f"Saved {pid}.md")
 
 
