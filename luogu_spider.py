@@ -28,11 +28,11 @@ def main():
         return
     problem = json.loads(m.group(1))["data"]["problem"]
     pid = problem["pid"]
-    content = problem["contenu"]
+    content = problem.get("contenu") or {}
     name = content.get("name", "")
-    desc = content.get("description", "").strip()
-    format_in = content.get("formatI", "").strip()
-    format_out = content.get("formatO", "").strip()
+    desc = (content.get("description") or "").strip()
+    format_in = (content.get("formatI") or "").strip()
+    format_out = (content.get("formatO") or "").strip()
     hint = (content.get("hint") or "").strip()
     samples = problem.get("samples") or []
     attachments = problem.get("attachments") or []
@@ -46,7 +46,9 @@ def main():
         md += ["", "## 附件", ""]
         for attachment in attachments:
             filename = attachment.get("filename", "附件")
-            download_link = attachment.get("downloadLink", "")
+            download_link = attachment.get("downloadLink") or (
+                f"/problem/{pid}/attachment/{attachment['id']}" if attachment.get("id") else ""
+            )
             if download_link:
                 link = urljoin("https://www.luogu.com.cn", download_link)
                 md.append(f"- [{filename}]({link})")
