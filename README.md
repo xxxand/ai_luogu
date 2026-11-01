@@ -35,6 +35,14 @@ python luogu_spider.py P1024
 
 This writes `P1024.md` containing the time and memory limits, description, input/output format, samples, hints, and attachment links. Without an ID the script defaults to `P1024`.
 
+Fetch a training list by number:
+
+```bash
+python luogu_spider.py 100
+```
+
+This writes `100.txt` with the B- and P-prefixed problem IDs from [training list 100](https://www.luogu.com.cn/training/100#problems), one per line in ascending order.
+
 Then ask your agent to solve it, for example:
 
 ```text
@@ -48,6 +56,7 @@ solve P1024
 | `<pid>.md`  | Scraped problem statement                       |
 | `<pid>.cpp` | C++ solution                                    |
 | `<pid>.exe` | Compiled binary                                 |
+| `<tid>.txt` | B/P problem IDs from training list `<tid>`      |
 
 Generated problems and binaries are ignored by Git (see `.gitignore`).
 

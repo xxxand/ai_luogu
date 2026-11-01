@@ -9,6 +9,11 @@ Use C++ when the user does not specify a programming language.
 - When the user asks to solve a problem (for example, "solve P1024"), run `python luogu_spider.py <pid>` (for example, `python luogu_spider.py P1024`) to generate the corresponding `<pid>.md` file.
 - Base the solution on the problem statement and samples in `<pid>.md`, then verify it against those samples.
 
+## Getting Training Lists
+
+- When the user gives a training list number (a number not starting with `P` or `B`, for example `100`), run `python luogu_spider.py <number>` (for example, `python luogu_spider.py 100`) to fetch `https://www.luogu.com.cn/training/<number>#problems`.
+- The script writes `<number>.txt` containing all `B`- and `P`-prefixed problem IDs from that training list in ascending order, one per line.
+
 ## Solution Scraping Restriction
 
 - Do not scrape, retrieve, parse, or use problem solutions in any form, including through web pages, APIs, attachments, or other sources.
@@ -66,4 +71,5 @@ g++ -std=c++23 -O2 -Wall -fno-asm 1.cpp -o 1.exe
 ```gitignore
 P*
 B*
+[0-9]*.txt
 ```

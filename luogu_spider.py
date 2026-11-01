@@ -19,8 +19,24 @@ def fetch(url):
         return resp.text
 
 
+def save_training(tid):
+    html = fetch(f"https://www.luogu.com.cn/training/{tid}")
+    m = re.search(r'<script id="lentille-context" type="application/json">(.*?)</script>', html, re.S)
+    if not m:
+        print("Parse failed: training data not found")
+        return
+    problems = json.loads(m.group(1))["data"]["training"]["problems"]
+    pids = sorted({p["pid"] for p in problems if p["pid"][0] in ("B", "P")}, key=lambda pid: (pid[0], int(pid[1:])))
+    with open(f"{tid}.txt", "w", encoding="utf-8") as f:
+        f.write("".join(f"{pid}\n" for pid in pids))
+    print(f"Saved {tid}.txt")
+
+
 def main():
     pid = sys.argv[1] if len(sys.argv) > 1 else "P1024"
+    if pid.isdigit():
+        save_training(pid)
+        return
     html = fetch(f"https://www.luogu.com.cn/problem/{pid}")
     m = re.search(r'<script id="lentille-context" type="application/json">(.*?)</script>', html, re.S)
     if not m:
