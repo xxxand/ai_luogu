@@ -33,7 +33,7 @@ Fetch a problem by ID:
 python luogu_spider.py P1024
 ```
 
-This writes `P1024.md` containing the description, input/output format, samples, hints, and attachment links. Without an ID the script defaults to `P1024`.
+This writes `P1024.md` containing the time and memory limits, description, input/output format, samples, hints, and attachment links. Without an ID the script defaults to `P1024`.
 
 Then ask your agent to solve it, for example:
 

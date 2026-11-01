@@ -36,8 +36,19 @@ def main():
     hint = (content.get("hint") or "").strip()
     samples = problem.get("samples") or []
     attachments = problem.get("attachments") or []
+    limits = problem.get("limits") or {}
+    time_limit = max(limits.get("time") or [0])
+    memory_limit = max(limits.get("memory") or [0])
 
-    md = [f"# {pid} {name}", "", "## 题目描述", "", desc, "", "## 输入格式", "", format_in, "", "## 输出格式", "", format_out]
+    md = [f"# {pid} {name}"]
+    if time_limit or memory_limit:
+        parts = []
+        if time_limit:
+            parts.append(f"时间限制：{time_limit / 1000:.2f}s")
+        if memory_limit:
+            parts.append(f"内存限制：{memory_limit / 1024:.2f}MB")
+        md += ["", " ".join(parts)]
+    md += ["", "## 题目描述", "", desc, "", "## 输入格式", "", format_in, "", "## 输出格式", "", format_out]
     for i, (input_data, output_data) in enumerate(samples, 1):
         md += ["", f"## 样例输入 {i}", "", "```", input_data.rstrip(), "```", "", f"## 样例输出 {i}", "", "```", output_data.rstrip(), "```"]
     if hint:
