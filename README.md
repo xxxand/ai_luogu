@@ -14,7 +14,7 @@ Problem ID  ->  luogu_spider.py  ->  <pid>.md  ->  AI coding agent  ->  <pid>.cp
 
 ## Requirements
 
-- Python 3
+- Python 3 (`python3`, or `python` on Windows)
 - `requests`
 - A C++23 compiler (`g++`)
 - An AI coding agent such as [OpenCode](https://opencode.ai/)
@@ -24,13 +24,15 @@ Problem ID  ->  luogu_spider.py  ->  <pid>.md  ->  AI coding agent  ->  <pid>.cp
 ```bash
 git clone https://github.com/xxxand/ai_luogu.git
 cd ai_luogu
-pip install requests
+python3 -m pip install requests
 ```
+
+The commands below use `python3`; both `python3` and `python` work on Windows.
 
 Fetch a problem by ID:
 
 ```bash
-python luogu_spider.py P1024
+python3 luogu_spider.py P1024
 ```
 
 This writes `P1024.md` containing the time and memory limits, description, input/output format, samples, hints, and attachment links. Without an ID the script defaults to `P1024`.
@@ -38,7 +40,7 @@ This writes `P1024.md` containing the time and memory limits, description, input
 Fetch a training list by number:
 
 ```bash
-python luogu_spider.py 100
+python3 luogu_spider.py 100
 ```
 
 This writes `100.txt` with the B- and P-prefixed problem IDs from [training list 100](https://www.luogu.com.cn/training/100#problems), one per line in ascending order.
@@ -55,16 +57,27 @@ solve P1024
 | ----------- | ----------------------------------------------- |
 | `<pid>.md`  | Scraped problem statement                       |
 | `<pid>.cpp` | C++ solution                                    |
-| `<pid>.exe` | Compiled binary                                 |
+| `<pid>.exe` | Compiled binary (Windows)                       |
+| `<pid>`     | Compiled binary (Linux)                         |
 | `<tid>.txt` | B/P problem IDs from training list `<tid>`      |
 
 Generated problems and binaries are ignored by Git (see `.gitignore`).
 
 ## Building
 
+Linux:
+
+```bash
+g++ -std=c++23 -O2 -Wall -fno-asm P1024.cpp -o P1024
+```
+
+Windows:
+
 ```powershell
 g++ -std=c++23 -O2 -Wall -fno-asm P1024.cpp -o P1024.exe
 ```
+
+Run the binary with `./P1024` on Linux or `.\P1024.exe` on Windows.
 
 ## Agent Instructions
 

@@ -4,14 +4,16 @@ This repository is used to solve Luogu problems.
 
 Use C++ when the user does not specify a programming language.
 
+Run Python commands with `python3`; on Windows, `python` also works.
+
 ## Getting Problems
 
-- When the user asks to solve a problem (for example, "solve P1024"), run `python luogu_spider.py <pid>` (for example, `python luogu_spider.py P1024`) to generate the corresponding `<pid>.md` file.
+- When the user asks to solve a problem (for example, "solve P1024"), run `python3 luogu_spider.py <pid>` (for example, `python3 luogu_spider.py P1024`) to generate the corresponding `<pid>.md` file.
 - Base the solution on the problem statement and samples in `<pid>.md`, then verify it against those samples.
 
 ## Getting Training Lists
 
-- When the user gives a training list number (a number not starting with `P` or `B`, for example `100`), run `python luogu_spider.py <number>` (for example, `python luogu_spider.py 100`) to fetch `https://www.luogu.com.cn/training/<number>#problems`.
+- When the user gives a training list number (a number not starting with `P` or `B`, for example `100`), run `python3 luogu_spider.py <number>` (for example, `python3 luogu_spider.py 100`) to fetch `https://www.luogu.com.cn/training/<number>#problems`.
 - The script writes `<number>.txt` containing all `B`- and `P`-prefixed problem IDs from that training list in ascending order, one per line.
 
 ## Solution Scraping Restriction
@@ -48,15 +50,31 @@ int main() {
 
 ## Compile Command
 
+Linux:
+
+```bash
+g++ -std=c++23 -O2 -Wall -fno-asm <file>.cpp -o <file>
+```
+
+Windows:
+
 ```powershell
 g++ -std=c++23 -O2 -Wall -fno-asm <file>.cpp -o <file>.exe
 ```
 
-Example:
+Example on Linux:
+
+```bash
+g++ -std=c++23 -O2 -Wall -fno-asm 1.cpp -o 1
+```
+
+Example on Windows:
 
 ```powershell
 g++ -std=c++23 -O2 -Wall -fno-asm 1.cpp -o 1.exe
 ```
+
+- Run the compiled binary with `./<file>` on Linux or `.\<file>.exe` on Windows.
 
 ## Python Code Format
 
