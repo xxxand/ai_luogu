@@ -14,7 +14,7 @@ Problem ID  ->  luogu_spider.py  ->  <pid>.md  ->  AI coding agent  ->  <pid>.cp
 
 ## Requirements
 
-- Python 3 (`python3`, or `python` on Windows)
+- Python 3 (`python3`)
 - `requests`
 - A C++23 compiler (`g++`)
 - An AI coding agent such as [OpenCode](https://opencode.ai/)
