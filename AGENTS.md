@@ -48,6 +48,11 @@ int main() {
 - Do not include blank lines or comments in C++ source files.
 - Name solution files `<pid>.cpp`.
 
+## Disallowed Optimization Directives
+
+- The Luogu judge builds GCC with optimization directives disabled in online-judge mode: `#pragma GCC optimize(...)` and `__attribute__((optimize(...)))` cause compilation errors.
+- Do not use them in solutions; rely on the `-O2` compile flag instead.
+
 ## Compile Command
 
 Linux:
