@@ -15,6 +15,7 @@ Run Python commands with `python3`; on Windows, `python` also works.
 
 - When the user gives a training list number (a number not starting with `P` or `B`, for example `100`), run `python3 luogu_spider.py <number>` (for example, `python3 luogu_spider.py 100`) to fetch `https://www.luogu.com.cn/training/<number>#problems`.
 - The script writes `<number>.txt` containing all `B`- and `P`-prefixed problem IDs from that training list in ascending order, one per line.
+- Extracting a training list is not a request to solve it; stop after `<number>.txt` is written unless the user asks for specific problems.
 
 ## Solution Scraping Restriction
 
@@ -45,7 +46,6 @@ int main() {
 }
 ```
 
-- Do not include blank lines or comments in C++ source files.
 - Name solution files `<pid>.cpp`.
 
 ## Disallowed Optimization Directives
@@ -65,18 +65,6 @@ Windows:
 
 ```powershell
 g++ -std=c++23 -O2 -Wall -fno-asm <file>.cpp -o <file>.exe
-```
-
-Example on Linux:
-
-```bash
-g++ -std=c++23 -O2 -Wall -fno-asm 1.cpp -o 1
-```
-
-Example on Windows:
-
-```powershell
-g++ -std=c++23 -O2 -Wall -fno-asm 1.cpp -o 1.exe
 ```
 
 - Run the compiled binary with `./<file>` on Linux or `.\<file>.exe` on Windows.
